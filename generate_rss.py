@@ -78,11 +78,8 @@ def fetch_latest_snapshot(cfg: StockConfig) -> StockSnapshot | None:
     low_price = float(last["Low"])
     volume = int(last["Volume"])
 
-    if len(hist) >= 2:
-        prev_close = float(hist.iloc[-2]["Close"])
-        change_pct = ((close_price - prev_close) / prev_close) * 100 if prev_close else 0.0
-    else:
-        change_pct = 0.0
+    # Change% is intraday move from open to close.
+    change_pct = ((close_price - open_price) / open_price) * 100 if open_price else 0.0
 
     return StockSnapshot(
         name=cfg.name,
