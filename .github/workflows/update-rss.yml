@@ -1,0 +1,57 @@
+name: Update RSS
+
+on:
+  schedule:
+    # Weekdays 20:15 UTC (~美东夏令时收盘后)
+    - cron: "15 20 * * 1-5"
+    # Weekdays 21:15 UTC (~美东冬令时收盘后)
+    - cron: "15 21 * * 1-5"
+  workflow_dispatch:
+    inputs:
+      manual_push:
+        description: "Force new items now"
+        required: false
+        default: "false"
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Generate RSS (scheduled)
+        if: github.event_name != 'workflow_dispatch' || github.event.inputs.manual_push != 'true'
+        run: |
+          python generate_rss.py \
+            --base-url "https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}"
+
+      - name: Generate RSS (manual force)
+        if: github.event_name == 'workflow_dispatch' && github.event.inputs.manual_push == 'true'
+        run: |
+          python generate_rss.py \
+            --manual \
+            --base-url "https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}"
+
+      - name: Commit and push if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add feed.xml
+          if git diff --cached --quiet; then
+            echo "No changes"
+            exit 0
+          fi
+          git commit -m "chore: update stock RSS"
+          git push
