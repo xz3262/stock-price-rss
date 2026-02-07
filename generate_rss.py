@@ -28,6 +28,19 @@ class FeedItem:
     link: str
 
 
+@dataclass
+class StockSnapshot:
+    name: str
+    symbol: str
+    trade_date: str
+    open_price: float
+    close_price: float
+    high_price: float
+    low_price: float
+    volume: int
+    change_pct: float
+
+
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Generate stock RSS feed")
     parser.add_argument("--config", default="stock_list.json", help="Stock config JSON file")
@@ -50,7 +63,7 @@ def format_price(v: float) -> str:
     return f"{v:.2f}"
 
 
-def fetch_latest_item(cfg: StockConfig, now_utc: datetime, manual: bool, base_url: str) -> FeedItem | None:
+def fetch_latest_snapshot(cfg: StockConfig) -> StockSnapshot | None:
     hist = yf.Ticker(cfg.symbol).history(period="10d", interval="1d", auto_adjust=False)
     if hist.empty:
         return None
@@ -71,23 +84,53 @@ def fetch_latest_item(cfg: StockConfig, now_utc: datetime, manual: bool, base_ur
     else:
         change_pct = 0.0
 
-    direction = "涨" if change_pct >= 0 else "跌"
-    title = f"{cfg.name} ({cfg.symbol}) | {trade_date} | {direction} {change_pct:+.2f}%"
-
-    description = (
-        f"交易日: {trade_date}\n"
-        f"Open: {format_price(open_price)}\n"
-        f"Close: {format_price(close_price)}\n"
-        f"High: {format_price(high_price)}\n"
-        f"Low: {format_price(low_price)}\n"
-        f"Volume: {volume:,}\n"
-        f"Change: {change_pct:+.2f}%"
+    return StockSnapshot(
+        name=cfg.name,
+        symbol=cfg.symbol,
+        trade_date=trade_date,
+        open_price=open_price,
+        close_price=close_price,
+        high_price=high_price,
+        low_price=low_price,
+        volume=volume,
+        change_pct=change_pct,
     )
 
+
+def build_summary_item(
+    snapshots: List[StockSnapshot], now_utc: datetime, manual: bool, base_url: str
+) -> FeedItem:
+    # Most symbols should share the same trading day; use the latest available day.
+    trade_date = max(s.trade_date for s in snapshots)
+    up_count = sum(1 for s in snapshots if s.change_pct >= 0)
+    down_count = len(snapshots) - up_count
+
+    title = f"美股收盘汇总 | {trade_date} | 上涨 {up_count} / 下跌 {down_count}"
+    rows: List[str] = []
+    rows.append("<p><strong>字段:</strong> Open / Close / High / Low / Volume / Change%</p>")
+    rows.append("<table border='1' cellpadding='6' cellspacing='0'>")
+    rows.append("<tr><th>股票</th><th>Open</th><th>Close</th><th>High</th><th>Low</th><th>Volume</th><th>Change%</th></tr>")
+
+    for s in sorted(snapshots, key=lambda x: x.symbol):
+        rows.append(
+            "<tr>"
+            f"<td>{s.name} ({s.symbol})</td>"
+            f"<td>{format_price(s.open_price)}</td>"
+            f"<td>{format_price(s.close_price)}</td>"
+            f"<td>{format_price(s.high_price)}</td>"
+            f"<td>{format_price(s.low_price)}</td>"
+            f"<td>{s.volume:,}</td>"
+            f"<td>{s.change_pct:+.2f}%</td>"
+            "</tr>"
+        )
+    rows.append("</table>")
+    rows.append(f"<p>生成时间(UTC): {now_utc.strftime('%Y-%m-%d %H:%M:%S')}</p>")
+    description = "".join(rows)
+
     if manual:
-        guid = f"{cfg.symbol}-{trade_date}-manual-{now_utc.strftime('%Y%m%d%H%M%S')}"
+        guid = f"daily-{trade_date}-manual-{now_utc.strftime('%Y%m%d%H%M%S')}"
     else:
-        guid = f"{cfg.symbol}-{trade_date}"
+        guid = f"daily-{trade_date}"
 
     return FeedItem(
         guid=guid,
@@ -153,16 +196,25 @@ def main() -> int:
     output_path = Path(args.output)
     configs = load_stock_configs(config_path)
 
-    existing = parse_existing_items(output_path)
+    existing = {k: v for k, v in parse_existing_items(output_path).items() if k.startswith("daily-")}
     merged: Dict[str, FeedItem] = dict(existing)
+    snapshots: List[StockSnapshot] = []
 
     for cfg in configs:
-        item = fetch_latest_item(cfg, now_utc, args.manual, args.base_url)
-        if item is None:
+        snap = fetch_latest_snapshot(cfg)
+        if snap is None:
             print(f"WARN: no data for {cfg.symbol}")
             continue
-        merged[item.guid] = item
-        print(f"OK: {cfg.symbol} -> {item.guid}")
+        snapshots.append(snap)
+        print(f"OK: {cfg.symbol} -> {snap.trade_date}")
+
+    if not snapshots:
+        print("ERROR: no stock data fetched")
+        return 1
+
+    summary_item = build_summary_item(snapshots, now_utc, args.manual, args.base_url)
+    merged[summary_item.guid] = summary_item
+    print(f"OK: summary -> {summary_item.guid}")
 
     sorted_items = sorted(
         merged.values(),

@@ -2,207 +2,23 @@
 <rss version="2.0">
   <channel>
     <title>US Stock Daily OHLC Feed</title>
-    <link>https://example.github.io/stockprice/</link>
+    <link>https://xz3262.github.io/stock-price-rss/</link>
     <description>Daily OHLCV updates for selected US stocks</description>
     <language>zh-CN</language>
-    <lastBuildDate>Sat, 07 Feb 2026 04:53:57 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 07 Feb 2026 05:30:54 +0000</lastBuildDate>
     <item>
-      <title>Roblox (RBLX) | 2026-02-06 | 涨 +9.66%</title>
-      <link>https://example.github.io/stockprice/feed.xml</link>
-      <guid isPermaLink="false">RBLX-2026-02-06-manual-20260207045357</guid>
-      <pubDate>Sat, 07 Feb 2026 04:53:57 +0000</pubDate>
-      <description>交易日: 2026-02-06
-Open: 67.41
-Close: 66.42
-High: 69.20
-Low: 60.34
-Volume: 34,068,200
-Change: +9.66%</description>
+      <title>美股收盘汇总 | 2026-02-06 | 上涨 4 / 下跌 2</title>
+      <link>https://xz3262.github.io/stock-price-rss/feed.xml</link>
+      <guid isPermaLink="false">daily-2026-02-06-manual-20260207053054</guid>
+      <pubDate>Sat, 07 Feb 2026 05:30:54 +0000</pubDate>
+      <description>&lt;p&gt;&lt;strong&gt;字段:&lt;/strong&gt; Open / Close / High / Low / Volume / Change%&lt;/p&gt;&lt;table border='1' cellpadding='6' cellspacing='0'&gt;&lt;tr&gt;&lt;th&gt;股票&lt;/th&gt;&lt;th&gt;Open&lt;/th&gt;&lt;th&gt;Close&lt;/th&gt;&lt;th&gt;High&lt;/th&gt;&lt;th&gt;Low&lt;/th&gt;&lt;th&gt;Volume&lt;/th&gt;&lt;th&gt;Change%&lt;/th&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;CoreWeave (CRWV)&lt;/td&gt;&lt;td&gt;77.90&lt;/td&gt;&lt;td&gt;89.95&lt;/td&gt;&lt;td&gt;90.60&lt;/td&gt;&lt;td&gt;77.10&lt;/td&gt;&lt;td&gt;34,004,400&lt;/td&gt;&lt;td&gt;+20.50%&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Google (GOOGL)&lt;/td&gt;&lt;td&gt;327.18&lt;/td&gt;&lt;td&gt;322.86&lt;/td&gt;&lt;td&gt;330.38&lt;/td&gt;&lt;td&gt;319.92&lt;/td&gt;&lt;td&gt;56,294,700&lt;/td&gt;&lt;td&gt;-2.53%&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Meta (META)&lt;/td&gt;&lt;td&gt;665.49&lt;/td&gt;&lt;td&gt;661.46&lt;/td&gt;&lt;td&gt;671.99&lt;/td&gt;&lt;td&gt;646.50&lt;/td&gt;&lt;td&gt;18,134,400&lt;/td&gt;&lt;td&gt;-1.31%&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;NVIDIA (NVDA)&lt;/td&gt;&lt;td&gt;176.69&lt;/td&gt;&lt;td&gt;185.41&lt;/td&gt;&lt;td&gt;187.00&lt;/td&gt;&lt;td&gt;174.60&lt;/td&gt;&lt;td&gt;230,887,800&lt;/td&gt;&lt;td&gt;+7.87%&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Roblox (RBLX)&lt;/td&gt;&lt;td&gt;67.41&lt;/td&gt;&lt;td&gt;66.42&lt;/td&gt;&lt;td&gt;69.20&lt;/td&gt;&lt;td&gt;60.34&lt;/td&gt;&lt;td&gt;34,068,200&lt;/td&gt;&lt;td&gt;+9.66%&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Tesla (TSLA)&lt;/td&gt;&lt;td&gt;400.87&lt;/td&gt;&lt;td&gt;411.11&lt;/td&gt;&lt;td&gt;414.55&lt;/td&gt;&lt;td&gt;397.75&lt;/td&gt;&lt;td&gt;62,559,600&lt;/td&gt;&lt;td&gt;+3.50%&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;p&gt;生成时间(UTC): 2026-02-07 05:30:54&lt;/p&gt;</description>
     </item>
     <item>
-      <title>NVIDIA (NVDA) | 2026-02-06 | 涨 +7.87%</title>
-      <link>https://example.github.io/stockprice/feed.xml</link>
-      <guid isPermaLink="false">NVDA-2026-02-06-manual-20260207045357</guid>
-      <pubDate>Sat, 07 Feb 2026 04:53:57 +0000</pubDate>
-      <description>交易日: 2026-02-06
-Open: 176.69
-Close: 185.41
-High: 187.00
-Low: 174.60
-Volume: 230,887,800
-Change: +7.87%</description>
-    </item>
-    <item>
-      <title>Google (GOOGL) | 2026-02-06 | 跌 -2.53%</title>
-      <link>https://example.github.io/stockprice/feed.xml</link>
-      <guid isPermaLink="false">GOOGL-2026-02-06-manual-20260207045357</guid>
-      <pubDate>Sat, 07 Feb 2026 04:53:57 +0000</pubDate>
-      <description>交易日: 2026-02-06
-Open: 327.18
-Close: 322.86
-High: 330.38
-Low: 319.92
-Volume: 56,294,700
-Change: -2.53%</description>
-    </item>
-    <item>
-      <title>Meta (META) | 2026-02-06 | 跌 -1.31%</title>
-      <link>https://example.github.io/stockprice/feed.xml</link>
-      <guid isPermaLink="false">META-2026-02-06-manual-20260207045357</guid>
-      <pubDate>Sat, 07 Feb 2026 04:53:57 +0000</pubDate>
-      <description>交易日: 2026-02-06
-Open: 665.49
-Close: 661.46
-High: 671.99
-Low: 646.50
-Volume: 18,134,400
-Change: -1.31%</description>
-    </item>
-    <item>
-      <title>Tesla (TSLA) | 2026-02-06 | 涨 +3.50%</title>
-      <link>https://example.github.io/stockprice/feed.xml</link>
-      <guid isPermaLink="false">TSLA-2026-02-06-manual-20260207045357</guid>
-      <pubDate>Sat, 07 Feb 2026 04:53:57 +0000</pubDate>
-      <description>交易日: 2026-02-06
-Open: 400.87
-Close: 411.11
-High: 414.55
-Low: 397.75
-Volume: 62,559,600
-Change: +3.50%</description>
-    </item>
-    <item>
-      <title>CoreWeave (CRWV) | 2026-02-06 | 涨 +20.50%</title>
-      <link>https://example.github.io/stockprice/feed.xml</link>
-      <guid isPermaLink="false">CRWV-2026-02-06-manual-20260207045357</guid>
-      <pubDate>Sat, 07 Feb 2026 04:53:57 +0000</pubDate>
-      <description>交易日: 2026-02-06
-Open: 77.90
-Close: 89.95
-High: 90.60
-Low: 77.10
-Volume: 34,004,400
-Change: +20.50%</description>
-    </item>
-    <item>
-      <title>Roblox (RBLX) | 2026-02-06 | 涨 +9.66%</title>
-      <link>https://example.github.io/stockprice/feed.xml</link>
-      <guid isPermaLink="false">RBLX-2026-02-06</guid>
-      <pubDate>Sat, 07 Feb 2026 04:53:56 +0000</pubDate>
-      <description>交易日: 2026-02-06
-Open: 67.41
-Close: 66.42
-High: 69.20
-Low: 60.34
-Volume: 34,068,200
-Change: +9.66%</description>
-    </item>
-    <item>
-      <title>NVIDIA (NVDA) | 2026-02-06 | 涨 +7.87%</title>
-      <link>https://example.github.io/stockprice/feed.xml</link>
-      <guid isPermaLink="false">NVDA-2026-02-06</guid>
-      <pubDate>Sat, 07 Feb 2026 04:53:56 +0000</pubDate>
-      <description>交易日: 2026-02-06
-Open: 176.69
-Close: 185.41
-High: 187.00
-Low: 174.60
-Volume: 230,887,800
-Change: +7.87%</description>
-    </item>
-    <item>
-      <title>Google (GOOGL) | 2026-02-06 | 跌 -2.53%</title>
-      <link>https://example.github.io/stockprice/feed.xml</link>
-      <guid isPermaLink="false">GOOGL-2026-02-06</guid>
-      <pubDate>Sat, 07 Feb 2026 04:53:56 +0000</pubDate>
-      <description>交易日: 2026-02-06
-Open: 327.18
-Close: 322.86
-High: 330.38
-Low: 319.92
-Volume: 56,294,700
-Change: -2.53%</description>
-    </item>
-    <item>
-      <title>Meta (META) | 2026-02-06 | 跌 -1.31%</title>
-      <link>https://example.github.io/stockprice/feed.xml</link>
-      <guid isPermaLink="false">META-2026-02-06</guid>
-      <pubDate>Sat, 07 Feb 2026 04:53:56 +0000</pubDate>
-      <description>交易日: 2026-02-06
-Open: 665.49
-Close: 661.46
-High: 671.99
-Low: 646.50
-Volume: 18,134,400
-Change: -1.31%</description>
-    </item>
-    <item>
-      <title>Tesla (TSLA) | 2026-02-06 | 涨 +3.50%</title>
-      <link>https://example.github.io/stockprice/feed.xml</link>
-      <guid isPermaLink="false">TSLA-2026-02-06</guid>
-      <pubDate>Sat, 07 Feb 2026 04:53:56 +0000</pubDate>
-      <description>交易日: 2026-02-06
-Open: 400.87
-Close: 411.11
-High: 414.55
-Low: 397.75
-Volume: 62,559,600
-Change: +3.50%</description>
-    </item>
-    <item>
-      <title>CoreWeave (CRWV) | 2026-02-06 | 涨 +20.50%</title>
-      <link>https://example.github.io/stockprice/feed.xml</link>
-      <guid isPermaLink="false">CRWV-2026-02-06</guid>
-      <pubDate>Sat, 07 Feb 2026 04:53:56 +0000</pubDate>
-      <description>交易日: 2026-02-06
-Open: 77.90
-Close: 89.95
-High: 90.60
-Low: 77.10
-Volume: 34,004,400
-Change: +20.50%</description>
-    </item>
-    <item>
-      <title>Roblox (RBLX) | 2026-02-06 | 涨 +9.66%</title>
-      <link>https://example.github.io/stockprice/feed.xml</link>
-      <guid isPermaLink="false">RBLX-2026-02-06-manual-20260207045342</guid>
-      <pubDate>Sat, 07 Feb 2026 04:53:42 +0000</pubDate>
-      <description>交易日: 2026-02-06\nOpen: 67.41\nClose: 66.42\nHigh: 69.20\nLow: 60.34\nVolume: 34,068,200\nChange: +9.66%</description>
-    </item>
-    <item>
-      <title>NVIDIA (NVDA) | 2026-02-06 | 涨 +7.87%</title>
-      <link>https://example.github.io/stockprice/feed.xml</link>
-      <guid isPermaLink="false">NVDA-2026-02-06-manual-20260207045342</guid>
-      <pubDate>Sat, 07 Feb 2026 04:53:42 +0000</pubDate>
-      <description>交易日: 2026-02-06\nOpen: 176.69\nClose: 185.41\nHigh: 187.00\nLow: 174.60\nVolume: 230,887,800\nChange: +7.87%</description>
-    </item>
-    <item>
-      <title>Google (GOOGL) | 2026-02-06 | 跌 -2.53%</title>
-      <link>https://example.github.io/stockprice/feed.xml</link>
-      <guid isPermaLink="false">GOOGL-2026-02-06-manual-20260207045342</guid>
-      <pubDate>Sat, 07 Feb 2026 04:53:42 +0000</pubDate>
-      <description>交易日: 2026-02-06\nOpen: 327.18\nClose: 322.86\nHigh: 330.38\nLow: 319.92\nVolume: 56,294,700\nChange: -2.53%</description>
-    </item>
-    <item>
-      <title>Meta (META) | 2026-02-06 | 跌 -1.31%</title>
-      <link>https://example.github.io/stockprice/feed.xml</link>
-      <guid isPermaLink="false">META-2026-02-06-manual-20260207045342</guid>
-      <pubDate>Sat, 07 Feb 2026 04:53:42 +0000</pubDate>
-      <description>交易日: 2026-02-06\nOpen: 665.49\nClose: 661.46\nHigh: 671.99\nLow: 646.50\nVolume: 18,134,400\nChange: -1.31%</description>
-    </item>
-    <item>
-      <title>Tesla (TSLA) | 2026-02-06 | 涨 +3.50%</title>
-      <link>https://example.github.io/stockprice/feed.xml</link>
-      <guid isPermaLink="false">TSLA-2026-02-06-manual-20260207045342</guid>
-      <pubDate>Sat, 07 Feb 2026 04:53:42 +0000</pubDate>
-      <description>交易日: 2026-02-06\nOpen: 400.87\nClose: 411.11\nHigh: 414.55\nLow: 397.75\nVolume: 62,559,600\nChange: +3.50%</description>
-    </item>
-    <item>
-      <title>CoreWeave (CRWV) | 2026-02-06 | 涨 +20.50%</title>
-      <link>https://example.github.io/stockprice/feed.xml</link>
-      <guid isPermaLink="false">CRWV-2026-02-06-manual-20260207045342</guid>
-      <pubDate>Sat, 07 Feb 2026 04:53:42 +0000</pubDate>
-      <description>交易日: 2026-02-06\nOpen: 77.90\nClose: 89.95\nHigh: 90.60\nLow: 77.10\nVolume: 34,004,400\nChange: +20.50%</description>
+      <title>美股收盘汇总 | 2026-02-06 | 上涨 4 / 下跌 2</title>
+      <link>https://xz3262.github.io/stock-price-rss/feed.xml</link>
+      <guid isPermaLink="false">daily-2026-02-06</guid>
+      <pubDate>Sat, 07 Feb 2026 05:18:54 +0000</pubDate>
+      <description>&lt;p&gt;&lt;strong&gt;字段:&lt;/strong&gt; Open / Close / High / Low / Volume / Change%&lt;/p&gt;&lt;table border='1' cellpadding='6' cellspacing='0'&gt;&lt;tr&gt;&lt;th&gt;股票&lt;/th&gt;&lt;th&gt;Open&lt;/th&gt;&lt;th&gt;Close&lt;/th&gt;&lt;th&gt;High&lt;/th&gt;&lt;th&gt;Low&lt;/th&gt;&lt;th&gt;Volume&lt;/th&gt;&lt;th&gt;Change%&lt;/th&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;CoreWeave (CRWV)&lt;/td&gt;&lt;td&gt;77.90&lt;/td&gt;&lt;td&gt;89.95&lt;/td&gt;&lt;td&gt;90.60&lt;/td&gt;&lt;td&gt;77.10&lt;/td&gt;&lt;td&gt;34,004,400&lt;/td&gt;&lt;td&gt;+20.50%&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Google (GOOGL)&lt;/td&gt;&lt;td&gt;327.18&lt;/td&gt;&lt;td&gt;322.86&lt;/td&gt;&lt;td&gt;330.38&lt;/td&gt;&lt;td&gt;319.92&lt;/td&gt;&lt;td&gt;56,294,700&lt;/td&gt;&lt;td&gt;-2.53%&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Meta (META)&lt;/td&gt;&lt;td&gt;665.49&lt;/td&gt;&lt;td&gt;661.46&lt;/td&gt;&lt;td&gt;671.99&lt;/td&gt;&lt;td&gt;646.50&lt;/td&gt;&lt;td&gt;18,134,400&lt;/td&gt;&lt;td&gt;-1.31%&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;NVIDIA (NVDA)&lt;/td&gt;&lt;td&gt;176.69&lt;/td&gt;&lt;td&gt;185.41&lt;/td&gt;&lt;td&gt;187.00&lt;/td&gt;&lt;td&gt;174.60&lt;/td&gt;&lt;td&gt;230,887,800&lt;/td&gt;&lt;td&gt;+7.87%&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Roblox (RBLX)&lt;/td&gt;&lt;td&gt;67.41&lt;/td&gt;&lt;td&gt;66.42&lt;/td&gt;&lt;td&gt;69.20&lt;/td&gt;&lt;td&gt;60.34&lt;/td&gt;&lt;td&gt;34,068,200&lt;/td&gt;&lt;td&gt;+9.66%&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Tesla (TSLA)&lt;/td&gt;&lt;td&gt;400.87&lt;/td&gt;&lt;td&gt;411.11&lt;/td&gt;&lt;td&gt;414.55&lt;/td&gt;&lt;td&gt;397.75&lt;/td&gt;&lt;td&gt;62,559,600&lt;/td&gt;&lt;td&gt;+3.50%&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;p&gt;生成时间(UTC): 2026-02-07 05:18:54&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>
