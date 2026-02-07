@@ -5,7 +5,14 @@
     <link>https://xz3262.github.io/stock-price-rss/</link>
     <description>Daily OHLCV updates for selected US stocks</description>
     <language>zh-CN</language>
-    <lastBuildDate>Sat, 07 Feb 2026 05:30:54 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 07 Feb 2026 05:32:40 +0000</lastBuildDate>
+    <item>
+      <title>美股收盘汇总 | 2026-02-06 | 上涨 4 / 下跌 2</title>
+      <link>https://xz3262.github.io/stock-price-rss/feed.xml</link>
+      <guid isPermaLink="false">daily-2026-02-06-manual-20260207053240</guid>
+      <pubDate>Sat, 07 Feb 2026 05:32:40 +0000</pubDate>
+      <description>&lt;p&gt;&lt;strong&gt;字段:&lt;/strong&gt; Open / Close / High / Low / Volume / Change%&lt;/p&gt;&lt;table border='1' cellpadding='6' cellspacing='0'&gt;&lt;tr&gt;&lt;th&gt;股票&lt;/th&gt;&lt;th&gt;Open&lt;/th&gt;&lt;th&gt;Close&lt;/th&gt;&lt;th&gt;High&lt;/th&gt;&lt;th&gt;Low&lt;/th&gt;&lt;th&gt;Volume&lt;/th&gt;&lt;th&gt;Change%&lt;/th&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;CoreWeave (CRWV)&lt;/td&gt;&lt;td&gt;77.90&lt;/td&gt;&lt;td&gt;89.95&lt;/td&gt;&lt;td&gt;90.60&lt;/td&gt;&lt;td&gt;77.10&lt;/td&gt;&lt;td&gt;34,004,400&lt;/td&gt;&lt;td&gt;+20.50%&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Google (GOOGL)&lt;/td&gt;&lt;td&gt;327.18&lt;/td&gt;&lt;td&gt;322.86&lt;/td&gt;&lt;td&gt;330.38&lt;/td&gt;&lt;td&gt;319.92&lt;/td&gt;&lt;td&gt;56,294,700&lt;/td&gt;&lt;td&gt;-2.53%&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Meta (META)&lt;/td&gt;&lt;td&gt;665.49&lt;/td&gt;&lt;td&gt;661.46&lt;/td&gt;&lt;td&gt;671.99&lt;/td&gt;&lt;td&gt;646.50&lt;/td&gt;&lt;td&gt;18,134,400&lt;/td&gt;&lt;td&gt;-1.31%&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;NVIDIA (NVDA)&lt;/td&gt;&lt;td&gt;176.69&lt;/td&gt;&lt;td&gt;185.41&lt;/td&gt;&lt;td&gt;187.00&lt;/td&gt;&lt;td&gt;174.60&lt;/td&gt;&lt;td&gt;230,887,800&lt;/td&gt;&lt;td&gt;+7.87%&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Roblox (RBLX)&lt;/td&gt;&lt;td&gt;67.41&lt;/td&gt;&lt;td&gt;66.42&lt;/td&gt;&lt;td&gt;69.20&lt;/td&gt;&lt;td&gt;60.34&lt;/td&gt;&lt;td&gt;34,068,200&lt;/td&gt;&lt;td&gt;+9.66%&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Tesla (TSLA)&lt;/td&gt;&lt;td&gt;400.87&lt;/td&gt;&lt;td&gt;411.11&lt;/td&gt;&lt;td&gt;414.55&lt;/td&gt;&lt;td&gt;397.75&lt;/td&gt;&lt;td&gt;62,559,600&lt;/td&gt;&lt;td&gt;+3.50%&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;p&gt;生成时间(UTC): 2026-02-07 05:32:40&lt;/p&gt;</description>
+    </item>
     <item>
       <title>美股收盘汇总 | 2026-02-06 | 上涨 4 / 下跌 2</title>
       <link>https://xz3262.github.io/stock-price-rss/feed.xml</link>
