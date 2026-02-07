@@ -33,11 +33,9 @@ class StockSnapshot:
     name: str
     symbol: str
     trade_date: str
-    open_price: float
+    prev_close: float
     close_price: float
-    high_price: float
-    low_price: float
-    volume: int
+    change_abs: float
     change_pct: float
 
 
@@ -65,31 +63,26 @@ def format_price(v: float) -> str:
 
 def fetch_latest_snapshot(cfg: StockConfig) -> StockSnapshot | None:
     hist = yf.Ticker(cfg.symbol).history(period="10d", interval="1d", auto_adjust=False)
-    if hist.empty:
+    if hist.empty or len(hist) < 2:
         return None
 
     last_idx = hist.index[-1]
     last = hist.iloc[-1]
+    prev = hist.iloc[-2]
     trade_date = last_idx.strftime("%Y-%m-%d")
 
     close_price = float(last["Close"])
-    open_price = float(last["Open"])
-    high_price = float(last["High"])
-    low_price = float(last["Low"])
-    volume = int(last["Volume"])
-
-    # Change% is intraday move from open to close.
-    change_pct = ((close_price - open_price) / open_price) * 100 if open_price else 0.0
+    prev_close = float(prev["Close"])
+    change_abs = close_price - prev_close
+    change_pct = (change_abs / prev_close) * 100 if prev_close else 0.0
 
     return StockSnapshot(
         name=cfg.name,
         symbol=cfg.symbol,
         trade_date=trade_date,
-        open_price=open_price,
+        prev_close=prev_close,
         close_price=close_price,
-        high_price=high_price,
-        low_price=low_price,
-        volume=volume,
+        change_abs=change_abs,
         change_pct=change_pct,
     )
 
@@ -104,20 +97,18 @@ def build_summary_item(
 
     title = f"市场收盘汇总 | {trade_date} | 上涨 {up_count} / 下跌 {down_count}"
     rows: List[str] = []
-    rows.append("<p><strong>字段:</strong> Open / Close / High / Low / Volume / Change%</p>")
+    rows.append("<p><strong>字段:</strong> Change / 昨收 / 今收</p>")
     rows.append("<table border='1' cellpadding='6' cellspacing='0'>")
-    rows.append("<tr><th>股票</th><th>Change%</th><th>Open</th><th>Close</th><th>High</th><th>Low</th><th>Volume</th></tr>")
+    rows.append("<tr><th>股票</th><th>Change</th><th>昨收</th><th>今收</th></tr>")
 
     for s in sorted(snapshots, key=lambda x: x.symbol):
+        direction = "上涨" if s.change_abs >= 0 else "下跌"
         rows.append(
             "<tr>"
             f"<td>{s.name} ({s.symbol})</td>"
-            f"<td>{s.change_pct:+.2f}%</td>"
-            f"<td>{format_price(s.open_price)}</td>"
+            f"<td>{direction} {s.change_abs:+.2f} ({s.change_pct:+.2f}%)</td>"
+            f"<td>{format_price(s.prev_close)}</td>"
             f"<td>{format_price(s.close_price)}</td>"
-            f"<td>{format_price(s.high_price)}</td>"
-            f"<td>{format_price(s.low_price)}</td>"
-            f"<td>{s.volume:,}</td>"
             "</tr>"
         )
     rows.append("</table>")
