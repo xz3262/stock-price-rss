@@ -109,18 +109,18 @@ def build_summary_item(
     rows: List[str] = []
     rows.append("<p><strong>字段:</strong> Open / Close / High / Low / Volume / Change%</p>")
     rows.append("<table border='1' cellpadding='6' cellspacing='0'>")
-    rows.append("<tr><th>股票</th><th>Open</th><th>Close</th><th>High</th><th>Low</th><th>Volume</th><th>Change%</th></tr>")
+    rows.append("<tr><th>股票</th><th>Change%</th><th>Open</th><th>Close</th><th>High</th><th>Low</th><th>Volume</th></tr>")
 
     for s in sorted(snapshots, key=lambda x: x.symbol):
         rows.append(
             "<tr>"
             f"<td>{s.name} ({s.symbol})</td>"
+            f"<td>{s.change_pct:+.2f}%</td>"
             f"<td>{format_price(s.open_price)}</td>"
             f"<td>{format_price(s.close_price)}</td>"
             f"<td>{format_price(s.high_price)}</td>"
             f"<td>{format_price(s.low_price)}</td>"
             f"<td>{s.volume:,}</td>"
-            f"<td>{s.change_pct:+.2f}%</td>"
             "</tr>"
         )
     rows.append("</table>")
