@@ -105,7 +105,7 @@ def build_summary_item(
     up_count = sum(1 for s in snapshots if s.change_pct >= 0)
     down_count = len(snapshots) - up_count
 
-    title = f"美股收盘汇总 | {trade_date} | 上涨 {up_count} / 下跌 {down_count}"
+    title = f"市场收盘汇总 | {trade_date} | 上涨 {up_count} / 下跌 {down_count}"
     rows: List[str] = []
     rows.append("<p><strong>字段:</strong> Open / Close / High / Low / Volume / Change%</p>")
     rows.append("<table border='1' cellpadding='6' cellspacing='0'>")
@@ -169,9 +169,9 @@ def write_feed(path: Path, base_url: str, items: List[FeedItem], now_utc: dateti
     rss = ET.Element("rss", version="2.0")
     channel = ET.SubElement(rss, "channel")
 
-    ET.SubElement(channel, "title").text = "US Stock Daily OHLC Feed"
+    ET.SubElement(channel, "title").text = "Market Daily OHLC Feed"
     ET.SubElement(channel, "link").text = f"{base_url.rstrip('/')}/"
-    ET.SubElement(channel, "description").text = "Daily OHLCV updates for selected US stocks"
+    ET.SubElement(channel, "description").text = "Daily OHLCV updates for selected indexes and stocks"
     ET.SubElement(channel, "language").text = "zh-CN"
     ET.SubElement(channel, "lastBuildDate").text = format_datetime(now_utc)
 

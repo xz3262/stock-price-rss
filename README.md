@@ -11,13 +11,9 @@
 ## Stocks
 配置文件：`stock_list.json`
 
-当前默认：
-- RBLX
-- NVDA
-- GOOGL
-- META
-- TSLA
-- CRWV
+当前包含（见 `stock_list.json`）：
+- 指数：S&P 500、Dow Jones、上证指数、深证成指、日经225、KOSPI
+- 股票：Unity、Figma、Apple、Meta、Google、Netflix、Pop Mart、Roblox、NVIDIA、Tesla、CoreWeave
 
 ## Local usage
 
