@@ -97,16 +97,15 @@ def build_summary_item(
 
     title = f"市场收盘汇总 | {trade_date} | 上涨 {up_count} / 下跌 {down_count}"
     rows: List[str] = []
-    rows.append("<p><strong>字段:</strong> Change / 昨收 / 今收</p>")
+    rows.append("<p><strong>字段:</strong> Change% / 昨收 / 今收</p>")
     rows.append("<table border='1' cellpadding='6' cellspacing='0'>")
-    rows.append("<tr><th>股票</th><th>Change</th><th>昨收</th><th>今收</th></tr>")
+    rows.append("<tr><th>股票</th><th>Change%</th><th>昨收</th><th>今收</th></tr>")
 
     for s in sorted(snapshots, key=lambda x: x.symbol):
-        direction = "上涨" if s.change_abs >= 0 else "下跌"
         rows.append(
             "<tr>"
             f"<td>{s.name} ({s.symbol})</td>"
-            f"<td>{direction} {s.change_abs:+.2f} ({s.change_pct:+.2f}%)</td>"
+            f"<td>{s.change_pct:+.2f}%</td>"
             f"<td>{format_price(s.prev_close)}</td>"
             f"<td>{format_price(s.close_price)}</td>"
             "</tr>"
