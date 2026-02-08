@@ -11,9 +11,18 @@
 ## Stocks
 配置文件：`stock_list.json`
 
+每条记录包含三个字段：
+- `name`：显示名称
+- `symbol`：Yahoo Finance 代码
+- `category`：分类，可选 `index`（指数）、`stock`（个股）、`crypto`（加密货币）
+
+RSS 输出会按 **指数 → 个股 → 加密货币** 三个板块分别展示。
+标题日期和涨跌统计只计入指数和个股，不受加密货币 24h 交易影响。
+
 当前包含（见 `stock_list.json`）：
 - 指数：S&P 500、Dow Jones、上证指数、深证成指、日经225、KOSPI
-- 股票：Unity、Figma、Apple、Meta、Google、Netflix、Pop Mart、Roblox、NVIDIA、Tesla、CoreWeave
+- 个股：Unity、Figma、Apple、Netflix、Pop Mart、Roblox、NVIDIA、Google、Meta、Tesla、CoreWeave
+- 加密货币：Bitcoin、Ethereum、Solana、BNB
 
 ## Local usage
 

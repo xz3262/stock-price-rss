@@ -12,11 +12,15 @@ import xml.etree.ElementTree as ET
 
 import yfinance as yf
 
+CATEGORY_ORDER = ["index", "stock", "crypto"]
+CATEGORY_LABELS = {"index": "指数", "stock": "个股", "crypto": "加密货币"}
+
 
 @dataclass
 class StockConfig:
     name: str
     symbol: str
+    category: str  # "index" | "stock" | "crypto"
 
 
 @dataclass
@@ -32,6 +36,7 @@ class FeedItem:
 class StockSnapshot:
     name: str
     symbol: str
+    category: str
     trade_date: str
     prev_close: float
     close_price: float
@@ -53,7 +58,7 @@ def load_stock_configs(path: Path) -> List[StockConfig]:
     raw = json.loads(path.read_text(encoding="utf-8"))
     out: List[StockConfig] = []
     for row in raw:
-        out.append(StockConfig(name=row["name"], symbol=row["symbol"]))
+        out.append(StockConfig(name=row["name"], symbol=row["symbol"], category=row.get("category", "stock")))
     return out
 
 
@@ -79,6 +84,7 @@ def fetch_latest_snapshot(cfg: StockConfig) -> StockSnapshot | None:
     return StockSnapshot(
         name=cfg.name,
         symbol=cfg.symbol,
+        category=cfg.category,
         trade_date=trade_date,
         prev_close=prev_close,
         close_price=close_price,
@@ -87,30 +93,57 @@ def fetch_latest_snapshot(cfg: StockConfig) -> StockSnapshot | None:
     )
 
 
-def build_summary_item(
-    snapshots: List[StockSnapshot], now_utc: datetime, manual: bool, base_url: str
-) -> FeedItem:
-    # Most symbols should share the same trading day; use the latest available day.
-    trade_date = max(s.trade_date for s in snapshots)
-    up_count = sum(1 for s in snapshots if s.change_pct >= 0)
-    down_count = len(snapshots) - up_count
-
-    title = f"市场收盘汇总 | {trade_date} | 上涨 {up_count} / 下跌 {down_count}"
+def _render_table(snapshots: List[StockSnapshot]) -> str:
+    """Render an HTML table for a list of snapshots, sorted by change% descending."""
     rows: List[str] = []
-    rows.append("<p><strong>字段:</strong> Change% / 昨收 / 今收</p>")
     rows.append("<table border='1' cellpadding='6' cellspacing='0'>")
-    rows.append("<tr><th>股票</th><th>Change%</th><th>昨收</th><th>今收</th></tr>")
-
-    for s in sorted(snapshots, key=lambda x: x.symbol):
+    rows.append("<tr><th>名称</th><th>涨跌%</th><th>昨收</th><th>今收</th></tr>")
+    for s in sorted(snapshots, key=lambda x: x.change_pct, reverse=True):
+        color = "#2e7d32" if s.change_pct >= 0 else "#c62828"
         rows.append(
             "<tr>"
             f"<td>{s.name} ({s.symbol})</td>"
-            f"<td>{s.change_pct:+.2f}%</td>"
+            f"<td style='color:{color};font-weight:bold'>{s.change_pct:+.2f}%</td>"
             f"<td>{format_price(s.prev_close)}</td>"
             f"<td>{format_price(s.close_price)}</td>"
             "</tr>"
         )
     rows.append("</table>")
+    return "".join(rows)
+
+
+def build_summary_item(
+    snapshots: List[StockSnapshot], now_utc: datetime, manual: bool, base_url: str
+) -> FeedItem:
+    # Group snapshots by category
+    groups: Dict[str, List[StockSnapshot]] = {}
+    for s in snapshots:
+        groups.setdefault(s.category, []).append(s)
+
+    # trade_date: only from index + stock (crypto trades 24/7 and would skew the date)
+    market_snapshots = [s for s in snapshots if s.category in ("index", "stock")]
+    if market_snapshots:
+        trade_date = max(s.trade_date for s in market_snapshots)
+    else:
+        trade_date = max(s.trade_date for s in snapshots)
+
+    # Title counts only index + stock
+    up_count = sum(1 for s in market_snapshots if s.change_pct >= 0)
+    down_count = len(market_snapshots) - up_count
+
+    title = f"市场收盘汇总 | {trade_date} | 上涨 {up_count} / 下跌 {down_count}"
+
+    rows: List[str] = []
+    for cat in CATEGORY_ORDER:
+        if cat not in groups:
+            continue
+        label = CATEGORY_LABELS[cat]
+        if cat == "crypto":
+            rows.append(f"<h3>{label} (UTC 日线)</h3>")
+        else:
+            rows.append(f"<h3>{label}</h3>")
+        rows.append(_render_table(groups[cat]))
+
     rows.append(f"<p>生成时间(UTC): {now_utc.strftime('%Y-%m-%d %H:%M:%S')}</p>")
     description = "".join(rows)
 
